@@ -386,3 +386,60 @@ C:\Users\TL\Documents\python_stack\django\users>python manage.py makemigrations
 No changes detected
 
 C:\Users\TL\Documents\python_stack\django\users>python manage.py migrate
+
+
+In [1]: from apps.dojo_ninjas.models import *
+
+In [2]: Dojo.objects.all()[0]
+Out[2]: <Dojo: Coding Dojo SV>
+
+In [3]: Dojo.objects.all()[0].name
+Out[3]: u'Coding Dojo SV'
+
+In [4]: Dojo.objects.all()[0].city
+Out[4]: u'Mountain View'
+
+In [5]: Dojo.objects.all()[0].dojo
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-5-8eb9c68dfacc> in <module>()
+----> 1 Dojo.objects.all()[0].dojo
+
+AttributeError: 'Dojo' object has no attribute 'dojo'
+
+In [6]: Dojo.objects.all()[0].dojo.ninjas
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-6-aee7eba4ac59> in <module>()
+----> 1 Dojo.objects.all()[0].dojo.ninjas
+
+AttributeError: 'Dojo' object has no attribute 'dojo'
+
+In [7]: Ninja.objects.all()[0].dojo
+Out[7]: <Dojo: Coding Dojo SV>
+
+In [8]: Ninja.objects.all()[0].dojo.city
+Out[8]: u'Mountain View'
+
+In [9]: Dojo.objects.all()[0].name
+Out[9]: u'Coding Dojo SV'
+
+In [10]: Ninja.objects.all()[0].dojo
+Out[10]: <Dojo: Coding Dojo SV>
+
+In [11]: Dojo.objects.all()[0].ninjas.all()
+Out[11]: <QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+
+In [12]: Dojo.objects.all()[0].ninjas.all()[0]
+Out[12]: <Ninja: Ninja object>
+
+In [13]: Dojo.objects.all()[0].ninjas.all()[0].__dict__
+Out[13]:
+{'_dojo_cache': <Dojo: Coding Dojo SV>,
+ '_state': <django.db.models.base.ModelState at 0x7cf5ef0>,
+ 'created_at': datetime.datetime(2018, 3, 17, 21, 12, 20, 26000, tzinfo=<UTC>),
+ 'dojo_id': 4,
+ 'first_name': u'Ting',
+ 'id': 3,
+ 'last_name': u'Lee',
+ 'updated_at': datetime.datetime(2018, 3, 17, 21, 12, 20, 26000, tzinfo=<UTC>)}
